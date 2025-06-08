@@ -13,4 +13,19 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContext = new TransactionsViewModel();
     }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        var newTransactionWindow = new NewTransactionWindow
+        {
+            Owner = this,            
+        };
+        
+        if(newTransactionWindow.ShowDialog() == true)
+        {
+            var newTransaction = newTransactionWindow.TransactionCreated;
+
+            //Adiciona no banco de dados
+        }
+    }
 }

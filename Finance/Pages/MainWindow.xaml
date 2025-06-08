@@ -38,7 +38,7 @@
                 </StackPanel>
                 <Button Content="+ Adicionar" Background="{StaticResource LightGreen600}"
                         Grid.Column="1" Foreground="White"
-                        Height="35" BorderThickness="0"
+                        Height="35" BorderThickness="0" Click="Button_Click"
                         Padding="8" />                
             </Grid>
         </Border>
