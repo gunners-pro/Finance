@@ -11,6 +11,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="120" />
+            <RowDefinition Height="250" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border Padding="10" Margin="10"
@@ -42,5 +43,44 @@
             </Grid>
         </Border>
 
+        <Border Grid.Row="1" Background="White" Padding="10" Margin="10,0" CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0.5" />
+                    <ColumnDefinition Width="250" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label>Gráficos</Label>
+                </StackPanel>
+                <Border Height="180" Grid.Column="1" Background="Gray"/>
+                <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 14">
+                        <icons:PackIconBoxIcons 
+                            Kind="RegularLeftDownArrowCircle" 
+                            Width="24" Height="24" Margin="14" Foreground="Green"
+                            VerticalAlignment="Center" />
+                        <StackPanel>
+                            <Label FontSize="16">Entradas</Label>
+                            <Label FontSize="22">$12.378,20</Label>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <icons:PackIconBoxIcons 
+                            Kind="RegularRightTopArrowCircle" 
+                            Width="24" Height="24" Margin="14" Foreground="Red"
+                            VerticalAlignment="Center" />
+                        <StackPanel>
+                            <Label FontSize="16">Saídas</Label>
+                            <Label FontSize="22">$15.788,21</Label>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" Background="White" Padding="10" Margin="10" CornerRadius="10">
+            <Label>Tabela</Label>
+        </Border>
     </Grid>
 </Window>
