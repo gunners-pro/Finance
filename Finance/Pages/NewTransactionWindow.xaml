@@ -31,7 +31,7 @@
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="0,0,0,20">
                 <Label VerticalAlignment="Center">Tipo:</Label>
-                <ComboBox x:Name="cmbType" Height="25" VerticalContentAlignment="Center">
+                <ComboBox x:Name="cmbType" Height="25" VerticalContentAlignment="Center" Style="{StaticResource CustomComboBoxStyle}">
                     <ComboBoxItem Tag="Income">Entrada</ComboBoxItem>
                     <ComboBoxItem Tag="Outcome">Saída</ComboBoxItem>
                 </ComboBox>
