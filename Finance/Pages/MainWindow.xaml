@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Finance"
         xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Background="#eeeeee"
         Title="Finance" MinHeight="720" MinWidth="1024" Height="720" Width="1024">
     <Grid>
