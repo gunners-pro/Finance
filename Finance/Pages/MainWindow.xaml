@@ -60,26 +60,50 @@
                 </StackPanel>
                 <Border Height="180" Grid.Column="1" Background="Gray"/>
                 <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 14">
-                        <icons:PackIconBoxIcons 
-                            Kind="RegularLeftDownArrowCircle" 
-                            Width="24" Height="24" Margin="14" Foreground="Green"
-                            VerticalAlignment="Center" />
-                        <StackPanel>
-                            <Label FontSize="16">Entradas</Label>
-                            <Label FontSize="22">$12.378,20</Label>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Border
+                                CornerRadius="8"
+                                Background="{StaticResource Green500}"
+                                Margin="20,0"
+                                Width="40" 
+                                Height="40">
+                                <icons:PackIconBoxIcons                                    
+                                Kind="RegularLeftDownArrowCircle" 
+                                Width="20" Height="20" Foreground="White"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                            </Border>
+                            <StackPanel>
+                                <Label FontSize="16">Entradas</Label>
+                                <Label FontSize="22">$12.378,20</Label>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <icons:PackIconBoxIcons 
-                            Kind="RegularRightTopArrowCircle" 
-                            Width="24" Height="24" Margin="14" Foreground="Red"
-                            VerticalAlignment="Center" />
-                        <StackPanel>
-                            <Label FontSize="16">Saídas</Label>
-                            <Label FontSize="22">$15.788,21</Label>
+                        <Border Grid.Row="1" Margin="20,20,10,20" Height="1" Background="LightGray"/>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Border
+                                CornerRadius="8"
+                                Background="{StaticResource LightGreen500}"
+                                Margin="20,0"
+                                Width="40" 
+                                Height="40">
+                                <icons:PackIconBoxIcons 
+                                Kind="RegularRightTopArrowCircle" 
+                                Width="20" Height="20" Foreground="White"
+                                VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                            <StackPanel>
+                                <Label FontSize="16">Saídas</Label>
+                                <Label FontSize="22">$15.788,21</Label>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
+                    </Grid>
                 </StackPanel>
                 
             </Grid>
