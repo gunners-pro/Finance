@@ -178,7 +178,7 @@
                             <DataGridTextColumn Header="Descrição" Binding="{Binding Description}" />
                             <DataGridTextColumn Header="Valor" Binding="{Binding Value, StringFormat=C}" />
                             <DataGridTextColumn Header="Data" Binding="{Binding Date, StringFormat=dd/MM/yyyy}" />
-                            <DataGridTextColumn Header="Tipo" Binding="{Binding Type}" />
+                            <DataGridTextColumn Header="Tipo" Binding="{Binding TypeTransactionFormatted}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 
