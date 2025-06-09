@@ -1,6 +1,7 @@
 ﻿using Finance.Models;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace Finance.Pages;
 
@@ -13,6 +14,7 @@ public partial class NewTransactionWindow : Window
     public NewTransactionWindow()
     {
         InitializeComponent();
+        HandlePlaceholderDatePick();
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,5 +41,33 @@ public partial class NewTransactionWindow : Window
     {
         DialogResult = false;
         Close();
+    }
+
+    private void HandlePlaceholderDatePick()
+    {
+        dpDate.Loaded += (s, e) =>
+        {
+            var datePickerTextBox = (DatePickerTextBox)dpDate.Template.FindName("PART_TextBox", dpDate);
+            if (datePickerTextBox == null) return;
+
+            // Esperar o template do DatePickerTextBox estar aplicado para acessar o watermark
+            datePickerTextBox.ApplyTemplate();
+
+            var watermark = (ContentControl)datePickerTextBox.Template.FindName("PART_Watermark", datePickerTextBox);
+            if (watermark == null) return;
+
+            void UpdateWatermarkVisibility()
+            {
+                watermark.Visibility = string.IsNullOrEmpty(datePickerTextBox.Text)
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+            }
+
+            // Inicializa o estado do placeholder
+            UpdateWatermarkVisibility();
+
+            // Atualiza a visibilidade toda vez que o texto muda
+            datePickerTextBox.TextChanged += (sender, args) => UpdateWatermarkVisibility();
+        };
     }
 }

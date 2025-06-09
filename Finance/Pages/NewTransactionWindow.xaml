@@ -36,7 +36,7 @@
                     <ComboBoxItem Tag="Outcome">Saída</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <DatePicker x:Name="dpDate" Grid.Row="4" Height="30" VerticalContentAlignment="Center" />
+            <DatePicker x:Name="dpDate" Grid.Row="4" Height="30" Style="{StaticResource CustomDatePickerStyle }" />
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Cancelar" Click="Button_Click_1" />
