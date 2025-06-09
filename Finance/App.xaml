@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="/Resources/Styles/CustomTextBoxStyle.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/CustomComboBoxStyle.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/CustomDatePickerStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/CustomButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <Style TargetType="TextBlock">

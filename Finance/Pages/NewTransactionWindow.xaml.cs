@@ -17,7 +17,7 @@ public partial class NewTransactionWindow : Window
         HandlePlaceholderDatePick();
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
+    private void Button_Click_AddNewTransaction(object sender, RoutedEventArgs e)
     {
         if( cmbType.SelectedItem is ComboBoxItem item && item.Tag is string tag && !string.IsNullOrWhiteSpace(tag))
         {
@@ -37,7 +37,7 @@ public partial class NewTransactionWindow : Window
         
     }
 
-    private void Button_Click_1(object sender, RoutedEventArgs e)
+    private void Button_Click_CloseWindowNewTransaction(object sender, RoutedEventArgs e)
     {
         DialogResult = false;
         Close();

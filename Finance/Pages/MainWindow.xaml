@@ -37,10 +37,14 @@
                             Foreground="{StaticResource LightGreen500}" Width="14" />
                     </StackPanel>
                 </StackPanel>
-                <Button Content="+ Adicionar" Background="{StaticResource LightGreen600}"
-                        Grid.Column="1" Foreground="White"
-                        Height="35" BorderThickness="0" Click="Button_Click"
-                        Padding="8" />                
+                <Button Grid.Column="1" Style="{StaticResource CustomButtonStyle}"
+                        Click="Button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <icons:BootstrapIcons Kind="Plus" Width="13" Height="13" />
+                        <TextBlock VerticalAlignment="Center" Foreground="White" Margin="10,0,0,0">Nova Transação</TextBlock>
+                    </StackPanel>                  
+                </Button>
+
             </Grid>
         </Border>
 
