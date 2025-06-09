@@ -1,4 +1,5 @@
-﻿using Finance.ViewModels;
+﻿using Finance.Data;
+using Finance.ViewModels;
 using System.Windows;
 
 namespace Finance.Pages;
@@ -8,10 +9,12 @@ namespace Finance.Pages;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly TransactionsViewModel _transactionsViewModel;
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new TransactionsViewModel();
+        _transactionsViewModel = new TransactionsViewModel();
+        DataContext = _transactionsViewModel;
     }
 
     private void Button_Click(object sender, RoutedEventArgs e)
@@ -20,12 +23,22 @@ public partial class MainWindow : Window
         {
             Owner = this,            
         };
-        
-        if(newTransactionWindow.ShowDialog() == true)
+
+        if (newTransactionWindow.ShowDialog() == true && newTransactionWindow.TransactionCreated != null)
         {
             var newTransaction = newTransactionWindow.TransactionCreated;
 
-            //Adiciona no banco de dados
+            try
+            {
+                using var db = new ContextDB();
+                db.Transactions.Add(newTransaction);
+                db.SaveChanges();
+                _transactionsViewModel.TransactionsList.Add(newTransaction);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error ao Salvar: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

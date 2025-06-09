@@ -7,7 +7,7 @@
         xmlns:icons="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Background="#eeeeee"
-        Title="Finance" Height="720" Width="1024">
+        Title="Finance" MinHeight="720" MinWidth="1024" Height="720" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="120" />
@@ -80,71 +80,76 @@
             </Grid>
         </Border>
         <Border Grid.Row="2" Background="White" Padding="0" Margin="10" CornerRadius="10">
-            <StackPanel>
-                <Label Padding="15,15" FontSize="16">Atividades Recentes</Label>
-                <DataGrid Margin="0" ItemsSource="{Binding TransactionsList}" 
-                  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HeadersVisibility="Column"
-                  GridLinesVisibility="None" RowHeaderWidth="0" Background="Transparent" BorderThickness="0"
-                  FontSize="14" HorizontalAlignment="Stretch" CanUserResizeColumns="False" CanUserSortColumns="False"
-                  VerticalAlignment="Top" CanUserReorderColumns="False"
-                  >
-                    <DataGrid.ColumnHeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="Background" Value="White" />
-                            <Setter Property="Foreground" Value="Gray" />
-                            <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="HorizontalContentAlignment" Value="Left" />
-                            <Setter Property="Padding" Value="30,0" />
-                            
-                            <Setter Property="FontSize" Value="14" />
-                            <Setter Property="BorderBrush" Value="#e5e7eb" />
-                            <Setter Property="BorderThickness" Value="0,1,0,1" />
-                            <Setter Property="Height" Value="40" />
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />                    
+                </Grid.RowDefinitions>
+                <Label Padding="15,15" FontSize="16" Grid.Row="0">Atividades Recentes</Label>                
+                    <DataGrid Margin="0" ItemsSource="{Binding TransactionsList}" Grid.Row="1"
+                      AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" HeadersVisibility="Column"
+                      GridLinesVisibility="None" RowHeaderWidth="0" Background="Transparent" BorderThickness="0"
+                      FontSize="14" HorizontalAlignment="Stretch" CanUserResizeColumns="False" CanUserSortColumns="False"
+                      VerticalAlignment="Top" CanUserReorderColumns="False" VerticalScrollBarVisibility="Auto"
+                        >
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="Gray" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                <Setter Property="Padding" Value="30,0" />
 
-                    <DataGrid.RowStyle>
-                        <Style TargetType="DataGridRow">
-                            <!-- Fundo normal da linha -->
-                            <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="Foreground" Value="Black" />
-                            <Setter Property="FontSize" Value="14"/>
-                            <Setter Property="Height" Value="40" />
-                            <Setter Property="Cursor" Value="Hand" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="BorderBrush" Value="#e5e7eb" />
+                                <Setter Property="BorderThickness" Value="0,1,0,1" />
+                                <Setter Property="Height" Value="40" />
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
 
-                            <!-- Linha selecionada -->
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="{StaticResource LightGreen200}" />
-                                    <Setter Property="Foreground" Value="Black" />
-                                </Trigger>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <!-- Fundo normal da linha -->
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="FontSize" Value="14"/>
+                                <Setter Property="Height" Value="40" />
+                                <Setter Property="Cursor" Value="Hand" />
 
-                                <!-- Linha ao passar o mouse -->
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{StaticResource LightGreen200}" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.RowStyle>
+                                <!-- Linha selecionada -->
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource LightGreen200}" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </Trigger>
 
-                    <DataGrid.CellStyle>
-                        <Style TargetType="DataGridCell">
-                            <Setter Property="Margin" Value="30,0" />
-                            <Setter Property="BorderThickness" Value="0" />
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Background" Value="Transparent" />
-                            <Setter Property="Foreground" Value="Black" />
-                        </Style>
-                    </DataGrid.CellStyle>
+                                    <!-- Linha ao passar o mouse -->
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource LightGreen200}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
 
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Descrição" Binding="{Binding Description}" />
-                        <DataGridTextColumn Header="Valor" Binding="{Binding Value, StringFormat=C}" />
-                        <DataGridTextColumn Header="Data" Binding="{Binding Date, StringFormat=dd/MM/yyyy}" />
-                        <DataGridTextColumn Header="Tipo" Binding="{Binding Type}" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="Margin" Value="30,0" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="Foreground" Value="Black" />
+                            </Style>
+                        </DataGrid.CellStyle>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Descrição" Binding="{Binding Description}" />
+                            <DataGridTextColumn Header="Valor" Binding="{Binding Value, StringFormat=C}" />
+                            <DataGridTextColumn Header="Data" Binding="{Binding Date, StringFormat=dd/MM/yyyy}" />
+                            <DataGridTextColumn Header="Tipo" Binding="{Binding Type}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                
+            </Grid>
         </Border>
     </Grid>
 </Window>

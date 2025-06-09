@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace Finance.ViewModels;
 
-class TransactionsViewModel
+public class TransactionsViewModel
 {
     public ObservableCollection<Transaction> TransactionsList { get; set; }
 
