@@ -23,11 +23,11 @@
             <Image Grid.Row="0" Source="pack://application:,,,/Resources/Images/online_banking_img.png" />
             <StackPanel Grid.Row="1" Margin="0,0,0,10">
                 <Label>Descrição:</Label>
-                <TextBox x:Name="txtDescription" />
+                <TextBox x:Name="txtDescription" Style="{StaticResource CustomTextBoxStyle}" />
             </StackPanel>
             <StackPanel Grid.Row="2"  Margin="0,0,0,10">
                 <Label>Valor:</Label>
-                <TextBox x:Name="txtValue" />
+                <TextBox x:Name="txtValue" Style="{StaticResource CustomTextBoxStyle}" />
             </StackPanel>
             <StackPanel Grid.Row="3" Margin="0,0,0,20">
                 <Label VerticalAlignment="Center">Tipo:</Label>
