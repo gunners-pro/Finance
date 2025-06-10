@@ -1,6 +1,8 @@
 ﻿using Finance.Data;
+using Finance.Models;
 using Finance.ViewModels;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Finance.Pages;
 
@@ -38,6 +40,37 @@ public partial class MainWindow : Window
             catch (Exception ex)
             {
                 MessageBox.Show($"Error ao Salvar: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+    }
+
+    private void DeleteTransaction_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button btn && btn.DataContext is Transaction transaction)
+        {
+            var resultado = MessageBox.Show(
+            $"Tem certeza que deseja excluir a transação:\n\n{transaction.Description} - {transaction.Value:C2}?",
+            "Confirmação",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question
+            );
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                // Remover do banco
+                using var db = new ContextDB();
+                var transInDb = db.Transactions.Find(transaction.Id);
+                if (transInDb != null)
+                {
+                    db.Transactions.Remove(transInDb);
+                    db.SaveChanges();
+                }
+
+                // Remover da lista
+                if (DataContext is TransactionsViewModel vm)
+                {
+                    vm.TransactionsList.Remove(transaction);
+                }
             }
         }
     }
