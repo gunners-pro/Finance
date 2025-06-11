@@ -181,10 +181,39 @@
                         </DataGrid.CellStyle>
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Descrição" Binding="{Binding Description}" />
+                        <DataGridTemplateColumn Header="Descrição">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Text="{Binding Description}"
+                                        TextTrimming="CharacterEllipsis"
+                                        TextWrapping="NoWrap"
+                                        MaxWidth="250"                                        
+                                        />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>                            
+                        </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Valor" Binding="{Binding Value, StringFormat=C}" />
                             <DataGridTextColumn Header="Data" Binding="{Binding Date, StringFormat=dd/MM/yyyy}" />
-                            <DataGridTextColumn Header="Tipo" Binding="{Binding TypeTransactionFormatted}" />
+                            
+                        <DataGridTextColumn Header="Tipo" Binding="{Binding TypeTransactionFormatted}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="TextAlignment" Value="Center" />
+                                    <Setter Property="Padding" Value="4,2" />
+                                    <Setter Property="FontSize" Value="12" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Type}" Value="Income">
+                                            <Setter Property="Background" Value="{StaticResource LightGreen500}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Type}" Value="Outcome">
+                                            <Setter Property="Background" Value="Red"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
 
                         <DataGridTemplateColumn Header="Ações">
                             <DataGridTemplateColumn.CellTemplate>
